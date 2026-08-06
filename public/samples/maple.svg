@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <defs>
+    <radialGradient id="lens" cx="46%" cy="42%" r="60%">
+      <stop offset="0%" stop-color="#e9f2ee"/>
+      <stop offset="50%" stop-color="#9fc3bb"/>
+      <stop offset="100%" stop-color="#5d8b83"/>
+    </radialGradient>
+    <filter id="lblur" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="1000" fill="#f5f3e8"/>
+  <circle cx="420" cy="440" r="300" fill="url(#lens)"/>
+  <g filter="url(#lblur)" opacity=".9">
+    <ellipse cx="420" cy="452" rx="150" ry="112" fill="#e2622f"/>
+    <ellipse cx="512" cy="392" rx="70" ry="56" fill="#f6b273"/>
+    <path d="M420 452 C 520 380 596 340 640 322" stroke="#f2e8d6" stroke-width="10" fill="none"/>
+    <path d="M420 452 C 340 540 288 596 258 626" stroke="#f2e8d6" stroke-width="10" fill="none"/>
+  </g>
+  <g fill="#2c3a30" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-weight="700" font-size="66">
+    <text x="800" y="410">Maple Street is a</text>
+    <text x="800" y="490">lovely avenue with</text>
+    <text x="800" y="570">lush trees</text>
+  </g>
+  <rect x="800" y="640" width="120" height="5" fill="#2c3a30"/>
+</svg>

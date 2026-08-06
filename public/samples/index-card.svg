@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1250" viewBox="0 0 1000 1250">
+  <rect width="1000" height="1250" fill="#efeee1"/>
+  <rect x="0" y="0" width="360" height="1250" fill="#6f7a44"/>
+  <g fill="#2f3520" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="440" y="300" font-size="52" letter-spacing="14" opacity=".6">0034</text>
+    <rect x="440" y="360" width="420" height="4" opacity=".35"/>
+    <text x="440" y="470" font-size="52" letter-spacing="14" opacity=".6">0095</text>
+    <text x="440" y="900" font-size="120" font-weight="700" letter-spacing="-4">12K</text>
+    <text x="440" y="960" font-size="26" letter-spacing="10" opacity=".55">SEVILLA</text>
+  </g>
+  <g fill="#eef0e2" opacity=".55" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" letter-spacing="10">
+    <text x="60" y="160">16 AVE</text>
+    <text x="60" y="1160">THU</text>
+  </g>
+</svg>

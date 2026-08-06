@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <defs>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f1ece0"/>
+      <stop offset="42%" stop-color="#d8dcc4"/>
+      <stop offset="100%" stop-color="#93a37a"/>
+    </linearGradient>
+    <filter id="hblur" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+  </defs>
+  <rect width="1400" height="1000" fill="url(#haze)"/>
+  <g filter="url(#hblur)" opacity=".9">
+    <path d="M0 720 C 300 620 520 700 760 660 C 1000 620 1200 690 1400 650 L1400 1000 L0 1000 Z" fill="#8b9a6d"/>
+    <path d="M0 850 C 260 790 560 860 860 810 C 1120 768 1280 820 1400 796 L1400 1000 L0 1000 Z" fill="#66754a"/>
+    <ellipse cx="1120" cy="220" rx="180" ry="140" fill="#fdfaee"/>
+  </g>
+  <g fill="#f7f6ea" opacity=".6" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" letter-spacing="14">
+    <text x="80" y="140">0316 AVE</text>
+  </g>
+</svg>

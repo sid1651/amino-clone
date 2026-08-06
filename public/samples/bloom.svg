@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1250" viewBox="0 0 1000 1250">
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="38%" r="72%">
+      <stop offset="0%" stop-color="#dfe9e2"/>
+      <stop offset="62%" stop-color="#b9cfc6"/>
+      <stop offset="100%" stop-color="#8fae9f"/>
+    </radialGradient>
+    <radialGradient id="petal" cx="46%" cy="46%" r="55%">
+      <stop offset="0%" stop-color="#fff3e2"/>
+      <stop offset="45%" stop-color="#f2a25f"/>
+      <stop offset="100%" stop-color="#c8452f"/>
+    </radialGradient>
+    <filter id="soft" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="veil" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="58"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="1250" fill="url(#sky)"/>
+  <g filter="url(#veil)" opacity=".85">
+    <ellipse cx="250" cy="980" rx="330" ry="240" fill="#7f9d84"/>
+    <ellipse cx="820" cy="240" rx="300" ry="260" fill="#e8efe6"/>
+  </g>
+  <g filter="url(#soft)">
+    <ellipse cx="470" cy="600" rx="250" ry="196" fill="url(#petal)"/>
+    <ellipse cx="616" cy="520" rx="120" ry="96" fill="#f6c98d" opacity=".8"/>
+    <ellipse cx="372" cy="700" rx="132" ry="104" fill="#b8391f" opacity=".62"/>
+  </g>
+  <g filter="url(#soft)" opacity=".9" stroke="#f7e9d2" stroke-width="7" fill="none">
+    <path d="M470 596 C 560 520 640 470 706 452"/>
+    <path d="M470 600 C 400 690 344 760 300 792"/>
+    <path d="M470 598 C 546 664 604 716 648 744"/>
+  </g>
+  <ellipse cx="470" cy="600" rx="46" ry="38" fill="#fff6e6" filter="url(#soft)"/>
+</svg>
