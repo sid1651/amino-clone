@@ -25,7 +25,8 @@ export function ExportDialog({ plan = "free", tokens = 0 }: { plan?: "free" | "p
   const template = templateById.get(project.templateId);
   const filled = project.slots.filter((slot) => slot.assetId).length;
   const missingRequired = filled < (template?.minSlots ?? 1);
-  const locked = options.resolution !== "720p" && plan !== "pro" && tokens < 1;
+  // All exports are unlocked in this build — no purchase required.
+  const locked = false;
 
   useEffect(() => {
     if (!open) return;
@@ -77,7 +78,7 @@ export function ExportDialog({ plan = "free", tokens = 0 }: { plan?: "free" | "p
           <div className="dialog-body">
             <section className="export-options">
               <div className="option-group"><label>Format</label><div className="format-cards"><button className={options.format === "mp4" ? "active" : ""} onClick={() => setOptions((value) => ({ ...value, format: "mp4" }))}><Film size={16} /><span><strong>MP4</strong><small>H.264 · universal</small></span></button><button className={options.format === "webm" ? "active" : ""} onClick={() => setOptions((value) => ({ ...value, format: "webm" }))}><Film size={16} /><span><strong>WebM</strong><small>VP9 · compact</small></span></button></div></div>
-              <div className="option-group"><label>Resolution</label><div className="resolution-grid">{resolutions.map((resolution) => { const isLocked = resolution !== "720p" && plan !== "pro" && tokens < 1; return <button key={resolution} className={options.resolution === resolution ? "active" : ""} onClick={() => setOptions((value) => ({ ...value, resolution }))}><span>{resolution}</span>{resolution === "720p" ? <small>Free</small> : isLocked ? <LockKeyhole size={12} /> : <small>HD</small>}</button>; })}</div></div>
+              <div className="option-group"><label>Resolution</label><div className="resolution-grid">{resolutions.map((resolution) => { return <button key={resolution} className={options.resolution === resolution ? "active" : ""} onClick={() => setOptions((value) => ({ ...value, resolution }))}><span>{resolution}</span><small>{resolution === "720p" ? "Free" : "HD"}</small></button>; })}</div></div>
               <div className="export-row"><div className="option-group"><label>Frame rate</label><div className="segmented"><button className={options.fps === 30 ? "active" : ""} onClick={() => setOptions((value) => ({ ...value, fps: 30 }))}>30 fps</button><button className={options.fps === 60 ? "active" : ""} onClick={() => setOptions((value) => ({ ...value, fps: 60 }))}>60 fps</button></div></div><div className="option-group"><label>Loops</label><select className="field" value={options.loops} onChange={(event) => setOptions((value) => ({ ...value, loops: Number(event.target.value) as ExportOptions["loops"] }))}>{[1, 2, 3, 4].map((loops) => <option value={loops} key={loops}>{loops}×</option>)}</select></div></div>
               {missingRequired && <div className="export-warning">Add at least {template?.minSlots ?? 1} media items before exporting. Empty slots remain visible as numbered samples.</div>}
               {error && <div className="export-error">{error}</div>}
@@ -89,7 +90,7 @@ export function ExportDialog({ plan = "free", tokens = 0 }: { plan?: "free" | "p
             </aside>
           </div>
         )}
-        {status !== "success" && <div className="dialog-footer">{status === "exporting" ? <><div className="export-progress"><span><strong>Rendering frame by frame</strong><small>{Math.round(progress * 100)}%</small></span><div><i style={{ width: `${progress * 100}%` }} /></div></div><button className="secondary-button" onClick={() => abortRef.current?.abort()}>Cancel</button></> : <><span className="entitlement-note">{options.resolution === "720p" ? "Free export · no account needed" : locked ? "Pro or 1 HD token required" : "HD export unlocked"}</span><button className="primary-button export-action" disabled={missingRequired} onClick={() => void startExport()}>{locked ? <><LockKeyhole size={14} /> Unlock export</> : <><Download size={14} /> Export {options.format.toUpperCase()}</>}</button></>}</div>}
+        {status !== "success" && <div className="dialog-footer">{status === "exporting" ? <><div className="export-progress"><span><strong>Rendering frame by frame</strong><small>{Math.round(progress * 100)}%</small></span><div><i style={{ width: `${progress * 100}%` }} /></div></div><button className="secondary-button" onClick={() => abortRef.current?.abort()}>Cancel</button></> : <><span className="entitlement-note">All exports unlocked</span><button className="primary-button export-action" disabled={missingRequired} onClick={() => void startExport()}><><Download size={14} /> Export {options.format.toUpperCase()}</></button></>}</div>}
       </div>
     </div>
   );
@@ -100,14 +101,6 @@ export function UpgradeDialog() {
   const setOpen = useEditorStore((state) => state.setUpgradeOpen);
   if (!open) return null;
   return (
-    <div className="dialog-backdrop" role="presentation" onMouseDown={(event) => { if (event.currentTarget === event.target) setOpen(false); }}>
-      <div className="upgrade-dialog" role="dialog" aria-modal="true" aria-labelledby="upgrade-title">
-        <button className="dialog-close icon-button" onClick={() => setOpen(false)} aria-label="Close"><X size={18} /></button>
-        <span className="plan-glow">PRO</span><h2 id="upgrade-title">Make every pixel count.</h2><p>Export in 1080p, 2K, 4K, and 8K with no watermarks and no monthly export caps.</p>
-        <div className="upgrade-price"><strong>$9</strong><span>/ month</span></div>
-        <ul><li><Check size={14} />Every one of our 55 motion templates</li><li><Check size={14} />Unlimited HD exports</li><li><Check size={14} />4K and 8K delivery</li></ul>
-        <a className="primary-button full" href="/account">View plan & upgrade</a><small>or use one prepaid HD token in Indonesia</small>
-      </div>
-    </div>
+    null
   );
 }

@@ -18,9 +18,9 @@ const faqs = [
   ["Do my images or videos get uploaded?", "No. LumaLoop decodes, previews, and renders your files locally in the browser. Your source media never travels to our servers."],
   ["Can I use every template on the free plan?", `Yes. All ${templateRegistry.length} templates are available to everyone. The free plan includes unlimited editing and 720p exports.`],
   ["Which browsers support export?", "The best experience is in current Chrome and Edge, where WebCodecs provides fast MP4 and WebM encoding. Other browsers receive clear capability guidance."],
-  ["Are exports watermarked?", "Never. Free 720p exports and Pro high-resolution exports are clean and ready to share."],
-  ["Can I cancel Pro anytime?", "Yes. Monthly and annual plans can be managed from your account. You keep Pro access until the end of the billing period."],
-  ["What are HD tokens?", "Creators in Indonesia can buy prepaid tokens instead of subscribing. One token authorizes one completed 1080p-or-higher export."],
+  ["Are exports watermarked?", "Never. All exports are clean and ready to share."],
+  ["Do I need a subscription?", "No. This build provides access to exports without subscription or purchase."],
+  ["What are HD tokens?", "Not required — high-resolution exports are available without prepaid tokens in this distribution."],
 ];
 
 function Brand() {
@@ -100,8 +100,7 @@ export function LandingPage({ user }: { user: { displayName: string } | null }) 
 
         <section id="pricing" className="pricing-section section-wrap">
           <div className="section-heading centered"><span className="section-kicker">Simple pricing</span><h2>Create free. Go crisp when it counts.</h2><p>Every motion template is included from day one.</p><div className="currency-toggle"><button className={currency === "USD" ? "active" : ""} onClick={() => setCurrency("USD")}>USD</button><button className={currency === "IDR" ? "active" : ""} onClick={() => setCurrency("IDR")}>IDR</button></div></div>
-          <div className="pricing-grid"><article className="price-card"><span className="price-label">Free</span><h3>$0</h3><p>Make as much as you like.</p><a href="/editor" className="price-button">Start creating</a><ul><li><Check />All {templateRegistry.length} templates</li><li><Check />Unlimited editing</li><li><Check />720p MP4 & WebM</li><li><Check />No watermark</li></ul></article><article className="price-card pro"><span className="popular-pill">Most popular</span><span className="price-label">Pro</span><h3>{price}<small>/ month</small></h3><p>For work that deserves every pixel.</p><a href="/account" className="price-button primary">Upgrade to Pro</a><ul><li><Check />Everything in Free</li><li><Check />1080p, 2K, 4K & 8K</li><li><Check />Unlimited HD exports</li><li><Check />Priority export codecs</li></ul></article></div>
-          {currency === "IDR" && <p className="token-note">Prefer prepaid? Creators in Indonesia can purchase single-use HD export tokens from their account.</p>}
+          <div className="pricing-grid"><article className="price-card"><span className="price-label">Free</span><h3>$0</h3><p>Make as much as you like.</p><a href="/editor" className="price-button">Start creating</a><ul><li><Check />All {templateRegistry.length} templates</li><li><Check />Unlimited editing</li><li><Check />HD MP4 & WebM</li><li><Check />No watermark</li></ul></article></div>
         </section>
 
         <section id="faq" className="faq-section section-wrap">
